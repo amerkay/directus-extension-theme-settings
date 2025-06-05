@@ -1,4 +1,4 @@
-# Theme Settings Interface for Directus: Visually Configure Your Frontend Theme's Colors, Fonts, and More
+# Theme Settings Interface Directus Extension: Visually Configure Your Frontend Theme Colors, Fonts, and More
 
 Interface for chosing harmonized primary &amp; accent colors, font pairings, shadows, rounded corners and more.
 
