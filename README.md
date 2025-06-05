@@ -38,7 +38,7 @@ The extension will store its output as a JSON object in this field, which includ
 
 **Example `cssText`:** Full example of generated CSS in [`theme-generated-example.css`](./docs/theme-generated-example.css).
 
-## 🎨 Using the field in your Nuxt 3 project
+## 🎨 Using the generated CSS in your Nuxt 3 project
 
 You need to add a server plugin in `server/plugins/` folder. See [`fetch-theme-css.ts`](/docs/fetch-theme-css.ts) for example implementation that you can use in your project. This will write the CSS to `app/assets/css/theme-generated.css` in your Nuxt 3 project.
 
