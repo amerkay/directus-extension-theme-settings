@@ -47,15 +47,15 @@ For **shadcn/ui** or **Nuxt UI** (which often use Tailwind), you can use these C
 
 ```css
 :root {
-  --theme--primary-50: /* ... */ ;
-  --theme--primary-100: /* ... */ ;
+  --theme--theme-primary-50: /* ... */ ;
+  --theme--theme-primary-100: /* ... */ ;
   /* ... more color shades ... */
   --theme--accent-50: /* ... */ ;
   /* ... more color shades ... */
   --theme--font-body: /* ... */ ;
   --theme--font-heading: /* ... */ ;
-  --theme--radius: /* ... */ ;
-  --theme--spacing-base: /* ... */ ;
+  --theme--theme-radius: /* ... */ ;
+  --theme--theme-spacing-base: /* ... */ ;
   /* ... and other theme variables ... */
 }
 ```

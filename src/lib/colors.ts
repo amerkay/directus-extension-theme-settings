@@ -10,7 +10,7 @@ import {
 export function getThemeColors(
   accent: ColorShade | null | undefined,
   primary: ColorShade | null | undefined,
-  prefixed = true
+  cssPrefix = "theme-"
 ): Record<string, string> {
   if (!accent || !primary) {
     throw new Error(
@@ -40,10 +40,10 @@ export function getThemeColors(
 
   // Expand color swatches
   const theme = {
-    ...expandColorSwatch("base", baseShade, prefixed),
-    ...expandColorSwatch("primary", primary, prefixed),
-    ...expandColorSwatch("accent", accent, prefixed),
-    ...expandColorSwatch("destructive", destructiveShade, prefixed),
+    ...expandColorSwatch("base", baseShade, cssPrefix),
+    ...expandColorSwatch("primary", primary, cssPrefix),
+    ...expandColorSwatch("accent", accent, cssPrefix),
+    ...expandColorSwatch("destructive", destructiveShade, cssPrefix),
   };
 
   return theme;
@@ -113,31 +113,31 @@ function getHSLValue(colorString: string | undefined): string {
   return `${hue} ${saturation}% ${lightness}%`;
 }
 
-function cssVariableName(name: string, prefixed = true): string {
-  return `${prefixed ? "--" : ""}${name}`;
+function cssVariableName(name: string, cssPrefix = "theme-"): string {
+  return `--${cssPrefix}${name}`;
 }
 
 function expandColorSwatch(
   name: string, // e.g., "base", "primary", "accent"
   colorShade: ColorShade, // The ColorShade object for the chosen color
-  prefixed = true
+  cssPrefix = "theme-"
 ): Record<string, string> {
   const paletteToUse = colorShade.paletteLight;
   const swatchVariables: Record<string, string> = {};
 
-  // Add step variables (e.g., --primary-50, --primary-100)
-  // The CSS variable name always uses the standard step (e.g., --primary-50).
+  // Add step variables (e.g., --theme-primary-50, --theme-primary-100)
+  // The CSS variable name always uses the standard step (e.g., --theme-primary-50).
   for (let i = 0; i < TW_COLOR_STEPS.length; i++) {
     const stepName = TW_COLOR_STEPS[i] || "";
     const colorValue = paletteToUse[stepName];
 
-    swatchVariables[cssVariableName(`${name}-${stepName}`, prefixed)] =
+    swatchVariables[cssVariableName(`${name}-${stepName}`, cssPrefix)] =
       getHSLValue(colorValue);
   }
 
-  // Add the text contrast color variable (e.g., --primary-text)
+  // Add the text contrast color variable (e.g., --theme-primary-text)
   const textColorValue = paletteToUse[`${colorShade.key}-text`];
-  swatchVariables[cssVariableName(`${name}-text`, prefixed)] =
+  swatchVariables[cssVariableName(`${name}-text`, cssPrefix)] =
     getHSLValue(textColorValue);
 
   return swatchVariables;

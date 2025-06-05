@@ -17,7 +17,10 @@ export interface ThemeValue extends ColorsSelection, FontSelection {
 }
 
 // Main function to build the theme CSS
-export function buildThemeCss(themeConfig: ThemeValue): string {
+export function buildThemeCss(
+  themeConfig: ThemeValue,
+  cssPrefix: string = "theme-"
+): string {
   const {
     colorAccent: accentName,
     colorPrimary: primaryName,
@@ -36,7 +39,7 @@ export function buildThemeCss(themeConfig: ThemeValue): string {
   const primaryColor = validateColor(primaryName, "Primary");
 
   // Add theme color variables
-  const colorCss = getThemeColorsCSS(accentColor, primaryColor);
+  const colorCss = getThemeColorsCSS(accentColor, primaryColor, cssPrefix);
   if (colorCss.trim()) {
     colorCss
       .split("\n")
@@ -46,21 +49,22 @@ export function buildThemeCss(themeConfig: ThemeValue): string {
 
   // Add font, radius, spacing, tracking variables
   if (fontHeading && typeof fontHeading === "string")
-    rootCssLines.push(`  --font-family-heading: '${fontHeading}';`);
+    rootCssLines.push(`  --${cssPrefix}font-family-heading: '${fontHeading}';`);
   if (fontBody && typeof fontBody === "string")
-    rootCssLines.push(`  --font-family-body: '${fontBody}';`);
+    rootCssLines.push(`  --${cssPrefix}font-family-body: '${fontBody}';`);
   if (radiusStyle && typeof radiusStyle === "string")
-    rootCssLines.push(`  --radius: ${radiusStyle};`);
+    rootCssLines.push(`  --${cssPrefix}radius: ${radiusStyle};`);
   if (spacingStyle && typeof spacingStyle === "string")
-    rootCssLines.push(`  --spacing: ${spacingStyle};`);
+    rootCssLines.push(`  --${cssPrefix}spacing: ${spacingStyle};`);
   if (trackingStyle && typeof trackingStyle === "string")
-    rootCssLines.push(`  --tracking: ${trackingStyle};`);
+    rootCssLines.push(`  --${cssPrefix}tracking: ${trackingStyle};`);
 
   // Add shadow styles
   if (shadowStyle && typeof shadowStyle === "string") {
     try {
       const shadowVarsRaw = getShadowVariablesCss(
-        shadowStyle as ShadowScaleName
+        shadowStyle as ShadowScaleName,
+        cssPrefix
       );
       shadowVarsRaw
         .split("\n")
@@ -109,9 +113,14 @@ function validateColor(
 // Helper function to generate CSS for theme colors
 function getThemeColorsCSS(
   accentColor: ColorShade,
-  primaryColor: ColorShade
+  primaryColor: ColorShade,
+  cssPrefix = "theme-"
 ): string {
-  const colorThemeVariables = getThemeColors(accentColor, primaryColor);
+  const colorThemeVariables = getThemeColors(
+    accentColor,
+    primaryColor,
+    cssPrefix
+  );
   return Object.entries(colorThemeVariables)
     .map(([key, value]) => `  ${key}: ${value};`)
     .join("\n");

@@ -43,7 +43,7 @@ function shadowValue(
  * Data: every scale fully expanded.
  * Numbers chosen based on modern UI trends, design system best practices,
  * and a focus on subtlety and natural light diffusion.
- * Color slots that need brand tint use hsl(var(--accent-9) / alpha).
+ * Color slots that need brand tint use hsl(var(--theme-accent-9) / alpha).
  * ----------------------------------------------------------------*/
 const SCALES: Record<ShadowScaleName, Record<ShadowStep, string>> = {
   flat: {
@@ -205,14 +205,14 @@ const SCALES: Record<ShadowScaleName, Record<ShadowStep, string>> = {
   },
 
   accentGlow: {
-    "2xs": shadowValue(0, 0, 4, 0, "hsl(var(--accent-9) / 0.10)"),
-    xs: shadowValue(0, 1, 6, 0, "hsl(var(--accent-9) / 0.12)"),
-    sm: shadowValue(0, 1, 8, 0, "hsl(var(--accent-9) / 0.14)"),
-    "": shadowValue(0, 1, 10, 0, "hsl(var(--accent-9) / 0.16)"), // base
-    md: shadowValue(0, 2, 12, 1, "hsl(var(--accent-9) / 0.18)"),
-    lg: shadowValue(0, 2, 16, 1, "hsl(var(--accent-9) / 0.20)"),
-    xl: shadowValue(0, 2, 24, 2, "hsl(var(--accent-9) / 0.22)"),
-    "2xl": shadowValue(0, 2, 32, 2, "hsl(var(--accent-9) / 0.24)"),
+    "2xs": shadowValue(0, 0, 4, 0, "hsl(var(--theme-accent-9) / 0.10)"),
+    xs: shadowValue(0, 1, 6, 0, "hsl(var(--theme-accent-9) / 0.12)"),
+    sm: shadowValue(0, 1, 8, 0, "hsl(var(--theme-accent-9) / 0.14)"),
+    "": shadowValue(0, 1, 10, 0, "hsl(var(--theme-accent-9) / 0.16)"), // base
+    md: shadowValue(0, 2, 12, 1, "hsl(var(--theme-accent-9) / 0.18)"),
+    lg: shadowValue(0, 2, 16, 1, "hsl(var(--theme-accent-9) / 0.20)"),
+    xl: shadowValue(0, 2, 24, 2, "hsl(var(--theme-accent-9) / 0.22)"),
+    "2xl": shadowValue(0, 2, 32, 2, "hsl(var(--theme-accent-9) / 0.24)"),
   },
 
   hard: {
@@ -230,11 +230,15 @@ const SCALES: Record<ShadowScaleName, Record<ShadowStep, string>> = {
 /* ----------------------------------------------------------------
  * Helper: turn a step map into CSS variable declarations
  * ----------------------------------------------------------------*/
-function buildCssVars(steps: Record<ShadowStep, string>): string {
+function buildCssVars(
+  steps: Record<ShadowStep, string>,
+  cssPrefix = "theme-"
+): string {
   const order: ShadowStep[] = ["2xs", "xs", "sm", "", "md", "lg", "xl", "2xl"];
   return order
     .map((key) => {
-      const varName = `--shadow-${key || ""}`.replace(/--shadow-$/, "--shadow");
+      const baseVarName = `--${cssPrefix}shadow`;
+      const varName = key ? `${baseVarName}-${key}` : baseVarName;
       return `${varName}: ${steps[key]};`;
     })
     .join("\n");
@@ -243,8 +247,11 @@ function buildCssVars(steps: Record<ShadowStep, string>): string {
 /* ----------------------------------------------------------------
  * Public API
  * ----------------------------------------------------------------*/
-export function getShadowVariablesCss(scale: ShadowScaleName): string {
+export function getShadowVariablesCss(
+  scale: ShadowScaleName,
+  cssPrefix = "theme-"
+): string {
   const map = SCALES[scale];
   if (!map) throw new Error(`Unknown shadow scale: ${scale}`);
-  return buildCssVars(map);
+  return buildCssVars(map, cssPrefix);
 }

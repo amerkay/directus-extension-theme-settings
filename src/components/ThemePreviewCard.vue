@@ -50,7 +50,7 @@ const themeStyles = computed(() => {
   const accentShade = colorsMap[props.accentItem.value];
 
   try {
-    return getThemeColors(accentShade, primaryShade, true);
+    return getThemeColors(accentShade, primaryShade);
   } catch (error) {
     console.error("ThemePreviewCard: Error generating theme styles:", error);
     return;
@@ -63,10 +63,10 @@ const themeStyles = computed(() => {
   flex: 1;
   min-width: 320px;
   padding: 15px;
-  border: 1px solid hsl(var(--base-400));
-  border-radius: var(--radius, 8px);
-  background-color: hsl(var(--base-100));
-  color: hsl(var(--base-950));
+  border: 1px solid hsl(var(--theme-base-400));
+  border-radius: var(--theme-radius, 8px);
+  background-color: hsl(var(--theme-base-100));
+  color: hsl(var(--theme-base-950));
 }
 
 .preview-content-wrapper {
@@ -98,19 +98,19 @@ const themeStyles = computed(() => {
   height: 20px;
   border-radius: 4px;
   margin-right: 8px;
-  border: 1px solid hsl(var(--base-600));
+  border: 1px solid hsl(var(--theme-base-600));
 }
 
 .color-swatch.primary-swatch {
-  background-color: hsl(var(--primary-500));
+  background-color: hsl(var(--theme-primary-500));
 }
 .color-swatch.accent-swatch {
-  background-color: hsl(var(--accent-500));
+  background-color: hsl(var(--theme-accent-500));
 }
 .color-swatch.base-swatch {
-  background-color: hsl(var(--base-100));
+  background-color: hsl(var(--theme-base-100));
 }
 .color-swatch.destructive-swatch {
-  background-color: hsl(var(--destructive-500));
+  background-color: hsl(var(--theme-destructive-500));
 }
 </style>
