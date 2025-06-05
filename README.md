@@ -1,4 +1,4 @@
-# Theme Settings Interface Extension for Directus v10+
+# Theme Settings Interface for Directus: Visually Configure Your Frontend Theme's Colors, Fonts, and More
 
 Interface for chosing harmonized primary &amp; accent colors, font pairings, shadows, rounded corners and more.
 
@@ -36,11 +36,13 @@ The extension will store its output as a JSON object in this field, which includ
 - Selected values for colors, fonts, radius, spacing, tracking, and shadows.
 - On save, the `cssText` value is generated and saved inside the JSON object of `theme_settings` field (or the field name you chose).
 
-**Example `cssText`:** Full example of generated CSS in [`theme-generated-example.css`](./docs/theme-generated-example.css).
+**Example `cssText`** generated CSS -> [`theme-generated-example.css`](./docs/theme-generated-example.css).
 
 ## 🎨 Using the generated CSS in your Nuxt 3 project
 
-You need to add a server plugin in `server/plugins/` folder. See [`fetch-theme-css.ts`](/docs/fetch-theme-css.ts) for example implementation that you can use in your project. This will write the CSS to `app/assets/css/theme-generated.css` in your Nuxt 3 project.
+Now, let's automate copying the generated CSS into your Nuxt 3 ([compatibilityVersion: 4](https://nuxt.com/docs/getting-started/upgrade#opting-in-to-nuxt-4)) project.
+
+To do so, **copy the server plugin [`fetch-theme-css.ts`](/docs/fetch-theme-css.ts) to your `server/plugins/` folder**. This will write the CSS generated to `app/assets/css/theme-generated.css`.
 
 ### Using the generated CSS with **shadcn-vue**
 
