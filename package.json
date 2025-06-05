@@ -1,0 +1,53 @@
+{
+  "name": "directus-extension-theme-settings",
+  "description": "Harmonize Tailwind CSS color settings. Choose font pairings, spacing, shadows, colors and more. See README for how to use with shadcn and Nuxt UI.",
+  "icon": "palette",
+  "version": "0.1.1",
+  "license": "MIT",
+  "author": "Amer Kawar",
+  "keywords": [
+    "directus",
+    "directus-extension",
+    "directus-extension-interface",
+    "tailwind",
+    "theme",
+    "theme settings",
+    "colors",
+    "font",
+    "fonts",
+    "typography",
+    "font pairing",
+    "shadcn",
+    "nuxt-ui",
+    "nuxt",
+    "nuxt3"
+  ],
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "directus:extension": {
+    "type": "interface",
+    "path": "dist/index.js",
+    "source": "src/index.ts",
+    "host": "^10.10.0"
+  },
+  "scripts": {
+    "build": "directus-extension build",
+    "dev": "directus-extension build -w --no-minify",
+    "link": "directus-extension link",
+    "validate": "directus-extension validate"
+  },
+  "devDependencies": {
+    "@directus/extensions-sdk": "13.1.1",
+    "@types/chroma-js": "^3.1.1",
+    "sass": "^1.89.1",
+    "typescript": "^5.8.3",
+    "vue": "^3.5.16"
+  },
+  "dependencies": {
+    "@directus/errors": "^2.0.1",
+    "@vueuse/core": "^13.3.0",
+    "chroma-js": "^3.1.2"
+  }
+}
