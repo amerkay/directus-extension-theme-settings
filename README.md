@@ -293,4 +293,4 @@ I would appreciate help adding more integration examples for other frameworks li
 
 ## 📄 License
 
-This extension is licensed under the [MIT License](LICENSE).
+This extension is licensed under the [MIT License](https://github.com/amerkay/directus-extension-theme-settings/blob/main/LICENSE).
