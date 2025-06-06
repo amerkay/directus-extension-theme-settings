@@ -4,7 +4,7 @@ Interface for choosing harmonized primary &amp; accent colors, font pairings, sh
 
 Integration examples for Nuxt with **shadcn-vue** and **Nuxt UI** below.
 
-![Screenshot of Theme Settings Interface in Directus](https://github.com/amerkay/directus-extension-theme-settings/blob/main/docs/screenshot-directus-extension-theme-settings.png?raw=true)
+![Screenshot of Theme Settings Interface in Directus](https://raw.githubusercontent.com/amerkay/directus-extension-theme-settings/main/docs/screenshot-directus-extension-theme-settings.png)
 
 ## ✨ Features
 

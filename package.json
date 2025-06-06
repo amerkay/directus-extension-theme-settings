@@ -2,7 +2,7 @@
   "name": "directus-extension-theme-settings",
   "description": "Harmonize Tailwind CSS color settings. Choose font pairings, spacing, shadows, colors and more. See README for how to use with shadcn and Nuxt UI.",
   "icon": "palette",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "license": "MIT",
   "author": "Amer Kawar",
   "repository": {
