@@ -4,7 +4,7 @@ Interface for choosing harmonized primary &amp; accent colors, font pairings, sh
 
 Integration examples for Nuxt with **shadcn-vue** and **Nuxt UI** below.
 
-![Screenshot of Theme Settings Interface in Directus](./docs/screenshot-directus-extension-theme-settings.png)
+![Screenshot of Theme Settings Interface in Directus](https://github.com/amerkay/directus-extension-theme-settings/blob/main/docs/screenshot-directus-extension-theme-settings.png?raw=true)
 
 ## ✨ Features
 
@@ -38,7 +38,7 @@ The extension will store its output as a JSON object in this field, which includ
 - Selected values for colors, fonts, radius, spacing, tracking, and shadows.
 - On save, the `cssText` value is generated and saved inside the JSON object of `theme_settings` field (or the field name you chose).
 
-**Example `cssText`** generated CSS -> [`theme-generated-example.css`](./docs/theme-generated-example.css).
+**Example `cssText`** generated CSS -> [`theme-generated-example.css`](https://github.com/amerkay/directus-extension-theme-settings/blob/main/docs/theme-generated-example.css).
 
 ## 🎨 Using the generated CSS in your Nuxt 3 (or 4) project
 
@@ -46,7 +46,7 @@ The extension will store its output as a JSON object in this field, which includ
 
 Now, let's automate copying the generated CSS into your Nuxt 3 ([compatibilityVersion: 4](https://nuxt.com/docs/getting-started/upgrade#opting-in-to-nuxt-4)) project.
 
-To do so, **copy the server plugin [`fetch-theme-css.ts`](/docs/fetch-theme-css.ts) to your `server/plugins/` folder**. This will write the CSS generated to `app/assets/css/theme-generated.css`.
+To do so, **copy the server plugin [`fetch-theme-css.ts`](https://github.com/amerkay/directus-extension-theme-settings/blob/main/docs/fetch-theme-css.ts) to your `server/plugins/` folder**. This will write the CSS generated to `app/assets/css/theme-generated.css`.
 
 Don't forget to define `DIRECTUS_URL` and `DIRECTUS_SERVER_TOKEN` in your `.env` file:
 
@@ -61,7 +61,7 @@ DIRECTUS_SERVER_TOKEN=your_directus_server_token
 
 1. To use the generated CSS with shadcn-vue, [make sure it's installed and configured](https://www.shadcn-vue.com/docs/installation/nuxt.html) along with TailwindCSS v4.
 
-2. Add the file [`theme-shadcn.css`](docs/theme-shadcn.css) to your `app/assets/css/theme-shadcn.css`, which imports `theme-generated.css` and maps the CSS variables to shadcn-vue's theme variables.
+2. Add the file [`theme-shadcn.css`](https://github.com/amerkay/directus-extension-theme-settings/blob/main/docs/theme-shadcn.css) to your `app/assets/css/theme-shadcn.css`, which imports `theme-generated.css` and maps the CSS variables to shadcn-vue's theme variables.
 
 3. Import `theme-shadcn.css` from your `tailwind.css` file and add the `@theme` directive:
 
@@ -156,7 +156,7 @@ DIRECTUS_SERVER_TOKEN=your_directus_server_token
 
 ### Using the generated CSS with **Nuxt UI**
 
-1. Make sure you set up [`fetch-theme-css.ts`](/docs/fetch-theme-css.ts) in your project to generate the CSS file.
+1. Make sure you set up [`fetch-theme-css.ts`](https://github.com/amerkay/directus-extension-theme-settings/blob/main/docs/fetch-theme-css.ts) in your project to generate the CSS file.
 2. Configure Nuxt UI + TailwindCSS v4. See [Nuxt UI documentation](https://ui.nuxt.com/getting-started/installation/nuxt) for installation and set up.
 3. Add the custom theme settings to your `tailwind.css` file:
 

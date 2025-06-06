@@ -9,21 +9,29 @@ jobs:
   create_release:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # Required to create releases and tags
+      contents: write
+      actions: write
+
     steps:
+      # 1) Checkout the repository so we can read package.json
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # 2) Extract the current version from package.json and set it as an output
       - name: Get package version
         id: get_version
-        run: echo "version=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
+        run: |
+          VERSION=$(jq -r .version package.json)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
 
+      # 3) Check if a GitHub Release for v<version> already exists
       - name: Check if release for version already exists
         id: check_release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAG_NAME: v${{ steps.get_version.outputs.version }}
         run: |
+          # Attempt to view the release; if it exists, we’ll skip creating it
           if gh release view "$TAG_NAME" > /dev/null 2>&1; then
             echo "Release for tag $TAG_NAME already exists. Skipping."
             echo "exists=true" >> $GITHUB_OUTPUT
@@ -32,9 +40,10 @@ jobs:
             echo "exists=false" >> $GITHUB_OUTPUT
           fi
 
+      # 4) Create the GitHub Release only if it does not already exist
       - name: Create GitHub Release
         if: steps.check_release.outputs.exists == 'false'
-        uses: actions/create-release@v1
+        uses: actions/create-release@v1.1.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -43,3 +52,9 @@ jobs:
           body: Automated release for version ${{ steps.get_version.outputs.version }}.
           draft: false
           prerelease: false
+
+      - name: Trigger Publish Workflow
+        if: steps.check_release.outputs.exists == 'false'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run publish.yml --ref ${{ github.ref }}
