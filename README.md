@@ -276,6 +276,8 @@ export default defineAppConfig({
 
 Contributions are welcome! Please feel free to submit a pull request or open an issue for bugs, feature requests, or improvements.
 
+I would appreciate help adding more integaration examples for other frameworks like Next.js, SvelteKit, etc.
+
 ## 📄 License
 
 This extension is licensed under the [MIT License](LICENSE).
