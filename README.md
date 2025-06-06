@@ -38,15 +38,26 @@ The extension will store its output as a JSON object in this field, which includ
 
 **Example `cssText`** generated CSS -> [`theme-generated-example.css`](./docs/theme-generated-example.css).
 
-## 🎨 Using the generated CSS in your Nuxt 3 project
+## 🎨 Using the generated CSS in your Nuxt 3 (or 4) project
+
+> Currently, I am including only Vue 3 / Nuxt 3 integration examples. Please contribute other framework examples like Next.js, SvelteKit, etc. Thank you 🤩
 
 Now, let's automate copying the generated CSS into your Nuxt 3 ([compatibilityVersion: 4](https://nuxt.com/docs/getting-started/upgrade#opting-in-to-nuxt-4)) project.
 
 To do so, **copy the server plugin [`fetch-theme-css.ts`](/docs/fetch-theme-css.ts) to your `server/plugins/` folder**. This will write the CSS generated to `app/assets/css/theme-generated.css`.
 
+Don't forget to define `DIRECTUS_URL` and `DIRECTUS_SERVER_TOKEN` in your `.env` file:
+
+```env
+DIRECTUS_URL=http://your-directus-instance.com
+DIRECTUS_SERVER_TOKEN=your_directus_server_token
+```
+
+> To get the `DIRECTUS_SERVER_TOKEN`, create a new `frontend-bot` user in Directus with the proper permissions to read the `theme_settings` field. Then, generate a server token for this user in the Directus admin panel.
+
 ### Using the generated CSS with **shadcn-vue**
 
-1. To use the generated CSS with shadcn-vue, [make sure it's installed and configured](https://www.shadcn-vue.com/docs/installation/nuxt.html) along with TailwindCSS.
+1. To use the generated CSS with shadcn-vue, [make sure it's installed and configured](https://www.shadcn-vue.com/docs/installation/nuxt.html) along with TailwindCSS v4.
 
 2. Add the file [`theme-shadcn.css`](docs/theme-shadcn.css) to your `app/assets/css/theme-shadcn.css`, which imports `theme-generated.css` and maps the CSS variables to shadcn-vue's theme variables.
 
@@ -144,7 +155,7 @@ To do so, **copy the server plugin [`fetch-theme-css.ts`](/docs/fetch-theme-css.
 ### Using the generated CSS with **Nuxt UI**
 
 1. Make sure you setup [`fetch-theme-css.ts`](/docs/fetch-theme-css.ts) in your project to generate the CSS file.
-2. Configure Nuxt UI. See [Nuxt UI documentation](https://ui.nuxt.com/getting-started/installation/nuxt) for installation and setup.
+2. Configure Nuxt UI + TailwindCSS v4. See [Nuxt UI documentation](https://ui.nuxt.com/getting-started/installation/nuxt) for installation and setup.
 3. Add the custom theme settings to your `tailwind.css` file:
 
 ```css
@@ -272,7 +283,7 @@ export default defineAppConfig({
 });
 ```
 
-## 🤝 Contributing
+## 🤩 Contributing
 
 Contributions are welcome! Please feel free to submit a pull request or open an issue for bugs, feature requests, or improvements.
 
