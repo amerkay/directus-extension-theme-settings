@@ -1,6 +1,8 @@
 # Theme Settings Interface Directus Extension: Visually Configure Your Frontend Theme Colors, Fonts, and More
 
-Interface for chosing harmonized primary &amp; accent colors, font pairings, shadows, rounded corners and more.
+Interface for choosing harmonized primary &amp; accent colors, font pairings, shadows, rounded corners and more.
+
+Integration examples for Nuxt with **shadcn-vue** and **Nuxt UI** below.
 
 ![Screenshot of Theme Settings Interface in Directus](./docs/screenshot-directus-extension-theme-settings.png)
 
@@ -40,7 +42,7 @@ The extension will store its output as a JSON object in this field, which includ
 
 ## 🎨 Using the generated CSS in your Nuxt 3 (or 4) project
 
-> Currently, I am including only Vue 3 / Nuxt 3 integration examples. Please contribute other framework examples like Next.js, SvelteKit, etc. Thank you 🤩
+> Currently, I am including only Vue 3 / Nuxt 3 integration examples for shadcn and nuxt/ui. Please contribute other framework or UI lib examples like Next.js, SvelteKit, etc. Thank you 🤩
 
 Now, let's automate copying the generated CSS into your Nuxt 3 ([compatibilityVersion: 4](https://nuxt.com/docs/getting-started/upgrade#opting-in-to-nuxt-4)) project.
 
@@ -154,8 +156,8 @@ DIRECTUS_SERVER_TOKEN=your_directus_server_token
 
 ### Using the generated CSS with **Nuxt UI**
 
-1. Make sure you setup [`fetch-theme-css.ts`](/docs/fetch-theme-css.ts) in your project to generate the CSS file.
-2. Configure Nuxt UI + TailwindCSS v4. See [Nuxt UI documentation](https://ui.nuxt.com/getting-started/installation/nuxt) for installation and setup.
+1. Make sure you set up [`fetch-theme-css.ts`](/docs/fetch-theme-css.ts) in your project to generate the CSS file.
+2. Configure Nuxt UI + TailwindCSS v4. See [Nuxt UI documentation](https://ui.nuxt.com/getting-started/installation/nuxt) for installation and set up.
 3. Add the custom theme settings to your `tailwind.css` file:
 
 ```css
@@ -287,7 +289,7 @@ export default defineAppConfig({
 
 Contributions are welcome! Please feel free to submit a pull request or open an issue for bugs, feature requests, or improvements.
 
-I would appreciate help adding more integaration examples for other frameworks like Next.js, SvelteKit, etc.
+I would appreciate help adding more integration examples for other frameworks like Next.js, SvelteKit, as well as other UI libraries.
 
 ## 📄 License
 
